@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://b47udoo4in7cn"]
+
+[ext_resource type="Script" uid="uid://dr6psrigarclf" path="res://battery.gd" id="1_8fmpm"]
+[ext_resource type="Texture2D" uid="uid://be0b24dfoawfc" path="res://battery.png" id="2_qise7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m10sm"]
+size = Vector2(10, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iq4wo"]
+size = Vector2(12, 16)
+
+[node name="battery" type="CharacterBody2D" unique_id=365167251]
+script = ExtResource("1_8fmpm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1508589954]
+position = Vector2(0, -8)
+texture = ExtResource("2_qise7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1108739324]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_m10sm")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=564658673]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1390667282]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_iq4wo")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

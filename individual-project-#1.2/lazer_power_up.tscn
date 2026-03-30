@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://g317mbsvvre1"]
+
+[ext_resource type="Script" uid="uid://5ci262pnpbhe" path="res://lazer_power_up.gd" id="1_jv8wg"]
+[ext_resource type="Texture2D" uid="uid://vgn3snc86ejk" path="res://lazergun.png" id="2_x3t2n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pxg10"]
+radius = 5.0
+
+[node name="lazer_power_up" type="Area2D" unique_id=1423924003]
+script = ExtResource("1_jv8wg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=703982062]
+position = Vector2(0, -7.0000005)
+scale = Vector2(0.8125, 0.78125006)
+texture = ExtResource("2_x3t2n")
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1311474353]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_pxg10")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

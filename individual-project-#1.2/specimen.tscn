@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cauma52il8gff"]
+
+[ext_resource type="Texture2D" uid="uid://hs42v88wvw83" path="res://specimen vial.png" id="1_ynhlf"]
+[ext_resource type="Script" uid="uid://b2al75g5e866l" path="res://specimen.gd" id="2_mp8f6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rk7yk"]
+radius = 4.237651
+height = 21.119686
+
+[node name="Sprite2D" type="Sprite2D" unique_id=1746383572]
+texture = ExtResource("1_ynhlf")
+script = ExtResource("2_mp8f6")
+
+[node name="ineraction" type="Area2D" parent="." unique_id=2025214333]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ineraction" unique_id=22714437]
+rotation = 0.7368933
+shape = SubResource("CapsuleShape2D_rk7yk")
+
+[connection signal="body_entered" from="ineraction" to="." method="_on_ineraction_body_entered"]

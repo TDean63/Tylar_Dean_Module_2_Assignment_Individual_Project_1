@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://diruowy8x2o2q"]
+
+[ext_resource type="Script" uid="uid://v7sjgyssuwfv" path="res://gameover.gd" id="1_4nh4k"]
+
+[node name="Gameover" type="Control" unique_id=153737576]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4nh4k")
+
+[node name="tryagain" type="Button" parent="." unique_id=1597624919]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -62.0
+offset_right = 64.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Try again?"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1704628220]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=571228780]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 49.0
+grow_horizontal = 2
+text = "You didnt make it off the planet.
+GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[connection signal="pressed" from="tryagain" to="." method="_on_tryagain_pressed"]

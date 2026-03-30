@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://sa1qk4ocasuq"]
+
+[ext_resource type="Texture2D" uid="uid://d3j8p0t6eyswi" path="res://lazer-Sheet.png" id="1_avoeb"]
+[ext_resource type="Script" uid="uid://m1wx6rwbvs5r" path="res://lazer.gd" id="1_pxg10"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxg10"]
+atlas = ExtResource("1_avoeb")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6c0s"]
+atlas = ExtResource("1_avoeb")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ml6d7"]
+atlas = ExtResource("1_avoeb")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_row12"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxg10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6c0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ml6d7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pxg10"]
+radius = 2.9999826
+height = 13.999919
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v6c0s"]
+radius = 7.0
+
+[node name="lazer" type="Area2D" unique_id=540119395]
+script = ExtResource("1_pxg10")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1971138952]
+position = Vector2(-5.9604645e-08, -7)
+scale = Vector2(0.875, 0.875)
+sprite_frames = SubResource("SpriteFrames_row12")
+frame_progress = 0.31915236
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=439907439]
+position = Vector2(0, -7)
+rotation = 1.5741984
+shape = SubResource("CapsuleShape2D_pxg10")
+
+[node name="hitbox" type="Area2D" parent="." unique_id=1794938052]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1131969161]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_v6c0s")
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

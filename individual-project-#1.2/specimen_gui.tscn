@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://xcfgskvm7va7"]
+
+[ext_resource type="Script" uid="uid://bsq714kgpt5ij" path="res://specimen_gui.gd" id="1_4sdta"]
+
+[node name="specimen_gui" type="CanvasLayer" unique_id=285950747]
+script = ExtResource("1_4sdta")
+
+[node name="Label" type="Label" parent="." unique_id=1966640670]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Label2" type="Label" parent="." unique_id=2094469802]
+offset_left = 1.0
+offset_top = 19.0
+offset_right = 41.0
+offset_bottom = 42.0

@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://cfi4cb0m11fwe"]
+
+[ext_resource type="Script" uid="uid://dx7ifeh7gt3ka" path="res://alien_two.gd" id="1_jkabv"]
+[ext_resource type="Texture2D" uid="uid://0k8xxlog5lx8" path="res://Oalien-Sheet.png" id="2_jkabv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13pff"]
+atlas = ExtResource("2_jkabv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttmu0"]
+atlas = ExtResource("2_jkabv")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dn1jv"]
+atlas = ExtResource("2_jkabv")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6kxu7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13pff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttmu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dn1jv")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ce22g"]
+size = Vector2(16, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jum5l"]
+size = Vector2(14, 3)
+
+[node name="alien_two" type="CharacterBody2D" unique_id=501061939]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_jkabv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=561840582]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_6kxu7")
+animation = &"move"
+autoplay = "move"
+frame_progress = 0.72202885
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=437903598]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_ce22g")
+
+[node name="hitbox" type="Area2D" parent="." unique_id=1500079947]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1873054851]
+position = Vector2(0, -14.5)
+shape = SubResource("RectangleShape2D_jum5l")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=971327821]
+position = Vector2(-9, -11)
+target_position = Vector2(0, 17)
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
